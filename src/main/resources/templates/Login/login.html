@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng nhập</title>
+    <link rel="stylesheet" href="styleLogin.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<style>
+body {
+    background-image: url('img/banner-bg.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+</style>
+<body>
+<section class="gradient-form">
+    <div class="row" style="display: flex;justify-content: center;">
+        <div class="col-lg-4 " style="margin:50px; background: rgba(255,255,255,0.8); border-radius: 20px;">
+            <div class="card">
+                <br>
+                <div class="card-body p-md-5 mx-md-4">
+                    <div class="text-center">
+                        <img src="img/img.png"
+                             style="width: 185px;" alt="logo">
+                        <h4 class="mt-1 mb-5 pb-1">Bến Xe Miền Đông</h4>
+                    </div>
+                    <form th:action="@{/login}" th:object="${taiKhoan}" method="post">
+                        <p>Đăng nhập vào hệ thống</p>
+                        <div class="form mb-4">
+                            <label class="form-label">Tên Đăng Nhập</label>
+                            <input type="text" class="form-control" th:field="*{TenDangNhap}"
+                                   placeholder="Username"/>
+                        </div>
+                        <br>
+                        <div class="form mb-4">
+                            <label class="form-label">Mật Khẩu</label>
+                            <input type="password" class="form-control" th:field="*{MatKhau}"
+                                   placeholder="Password"/>
+                        </div>
+                        <br>
+                        <div class="text-center pt-1 mb-5 pb-1">
+                            <a class="text-muted" href="#!">Quên Mật Khẩu?</a>
+                            <br>
+                            <button class="btn btn-primary  d-grid w-100">
+                                Log in
+                            </button>
+                        </div>
+                        <br>
+                        <div class="text-center pt-1 mb-5 pb-1">
+                            <a class="text-muted" href="/register">Bạn chưa có tài khoản tạo tài khoản ngay?</a>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="text-center pt-1 mb-5 pb-1">
+                            <a class="text-muted" href="/">Quay lại trang chủ</a>
+                        </div>
+                        <br>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

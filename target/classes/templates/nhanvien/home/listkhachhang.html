@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Bến xe miền đông</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <th:block th:replace="layoutnhanvien :: link-css"></th:block>
+</head>
+<body id="page-top">
+<div id="wrapper">
+    <!-- Sidebar -->
+    <th:block th:replace="layoutnhanvien :: sidebar"></th:block>
+    <!-- End of Sidebar -->
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+        <th:block th:replace="layoutnhanvien :: navbar"></th:block>
+        <!-- Main Content -->
+        <div id="content">
+            <div class="container-fluid">
+                <table class="table">
+                    <tr>
+                        <th>Họ Tên</th>
+                        <th>Địa Chỉ</th>
+                        <th>Số Điện Thoại</th>
+                        <th>Email</th>
+                    </tr>
+                    <tr th:each="khachhang : ${KhachHangs}">
+                        <td th:text="${khachhang.TenKH}"></td>
+                        <td th:text="${khachhang.DiaChi}"></td>
+                        <td th:text="${khachhang.SDT}"></td>
+                        <td th:text="${khachhang.Email}"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of Page Wrapper -->
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+<th:block th:replace="layoutnhanvien :: link-javascript"></th:block>
+</body>
+</html>

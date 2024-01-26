@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bến xe miền đông</title>
+    <th:block th:replace="layoutxe :: link-css"></th:block>
+</head>
+<body id="page-top">
+<div id="wrapper">
+    <th:block th:replace="layoutxe :: sidebar"></th:block>
+    <div id="content-wrapper" class="d-flex flex-column">
+        <th:block th:replace="layoutxe :: navbar"></th:block>
+        <!--==================================== Main Content===================================== -->
+        <<<<<<< HEAD
+        <div id="content">
+            <div class="container-fluid">
+                <table class="table">
+                    <tr>
+                        <th>Biển kiểm soát</th>
+                        <th>Tên tài xế</th>
+                        <th>Số Điện Thoại</th>
+                        <th>Email</th>
+                        <th>Số ghế</th>
+                        <th>Năm sản xuất</th>
+                        <th>Loại xe</th>
+                        <th>Bãi đậu xe</th>
+                    </tr>
+                    <tr th:each="xe : ${xes}">
+                        <td th:text="${xe.BKS}"></td>
+                        <td th:text="${xe.TenTaiXe}"></td>
+                        <td th:text="${xe.SDT}"></td>
+                        <td th:text="${xe.Email}"></td>
+                        <td th:text="${xe.SoGhe}"></td>
+                        <td th:text="${xe.NamSX}"></td>
+                        <td th:text="${xe.loaiXe.TenLoaiXe}"></td>
+                        <td th:text="${xe.baiDauXe.MoTaViTri}"></td>
+                    </tr>
+                </table>
+                =======
+                <section>
+                    <div>
+                        <span>Index Nhà xe</span>
+                        >>>>>>> origin/hieu
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+<th:block th:replace="layoutxe :: link-javascript"></th:block>
+</body>
+</html>

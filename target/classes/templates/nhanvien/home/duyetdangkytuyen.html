@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Đăng ký tuyến</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <th:block th:replace="layoutnhanvien :: link-css"></th:block>
+</head>
+<body id="page-top">
+<div id="wrapper">
+    <!-- Sidebar -->
+    <th:block th:replace="layoutnhanvien :: sidebar"></th:block>
+    <!-- End of Sidebar -->
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+        <th:block th:replace="layoutnhanvien :: navbar"></th:block>
+        <!-- Main Content -->
+        <div id="content">
+            <div class="container-fluid">
+                <form th:action="@{/nhanvien/duyetdangkytuyen/{id}(id=${pdkt.PhieuDangKyTuyen})}" method="post">
+                    <div class="col-12 mb-3">
+                        <label class="form-label" for="title">Thời gian đăng ký tuyến: </label>
+                        <br>
+                        <input disabled th:value="${pdkt.ThoiGianNopPhieu}" id="ThoiGianNopPhieu">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label class="form-label" for="author">Thời gian xin vận hành: </label>
+                        <br>
+                        <input disabled th:value="${pdkt.ThoiGianBatDauVanHanh}">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label class="form-label" for="author">Tên nhà xe: </label>
+                        <br>
+                        <input disabled th:value="${pdkt.chuXe.TenChuXe}">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label class="form-label" for="author">Loại xe: </label>
+                        <br>
+                        <input disabled th:value="${pdkt.loaiXe.TenLoaiXe}">
+                    </div>
+                    <div class="col-6 mb-3">
+                        <label class="form-label" for="author">Tuyến: </label>
+                        <br>
+                        <label class="form-label" for="author">Từ: </label>
+                        <br>
+                        <input disabled th:value="${pdkt.tuyen.DiemDi}">
+                        <br>
+                        <label class="form-label" for="author">Đến: </label>
+                        <br>
+                        <input disabled th:value="${pdkt.tuyen.DiemDen}">
+                        <br>
+                        <label class="form-label" for="author">Thời gian xuất bến: </label>
+                        <br>
+                        <input disabled th:value="${pdkt.tuyen.ThoiGianXuatBen}">
+                        <br>
+                        <label class="form-label" for="author">Thời Gian Về Bến: </label>
+                        <br>
+                        <input disabled th:value="${pdkt.tuyen.ThoiGianVeBen}">
+                    </div>
+                    <input class="btn btn-success" type="submit" value="Duyệt">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of Page Wrapper -->
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+<th:block th:replace="layoutnhanvien :: link-javascript"></th:block>
+</body>
+</html>

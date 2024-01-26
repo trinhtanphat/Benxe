@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bến xe miền đông</title>
+    <th:block th:replace="layoutxe :: link-css"></th:block>
+</head>
+<body id="page-top">
+<div id="wrapper">
+    <th:block th:replace="layoutxe :: sidebar"></th:block>
+    <div id="content-wrapper" class="d-flex flex-column">
+        <th:block th:replace="layoutxe :: navbar"></th:block>
+        <!--==================================== Main Content===================================== -->
+        <div id="content">
+            <div class="container-fluid">
+                <table class="table">
+                    <tr>
+                        <th>Tên khách hàng</th>
+                        <th>Ngày đặt</th>
+                        <th>Vị trí lên xe</th>
+                        <th>Tình trạng vé</th>
+                        <th>Ghi chú</th>
+                    </tr>
+                    <tr th:each="ve : ${ves}">
+                        <td th:text="${ve.khachHang.TenKH}"></td>
+                        <td th:text="${ve.NgayDat}"></td>
+                        <td th:text="${ve.ViTriLenXe}"></td>
+                        <td th:text="${ve.TinhTrangVe}"></td>
+                        <td th:text="${ve.GhiChu}"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!-- ================================== End Main Content ==================================-->
+    </div>
+</div>
+</div>
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+<th:block th:replace="layoutxe :: link-javascript"></th:block>
+</body>
+</html>

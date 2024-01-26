@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bến xe miền đông</title>
+    <th:block th:replace="layoutxe :: link-css"></th:block>
+</head>
+<body id="page-top">
+<div id="wrapper">
+    <th:block th:replace="layoutxe :: sidebar"></th:block>
+    <div id="content-wrapper" class="d-flex flex-column">
+        <th:block th:replace="layoutxe :: navbar"></th:block>
+        <!--==================================== Main Content===================================== -->
+        <form class="w-100 d-flex align-items-center flex-column" th:action="@{/xe/themchuyen}" method="post">
+            <div class="form-outline mb-4 col-9">
+                <label class="title">Chọn ngày chạy</label>
+                <input type="date" class="form-control" th:value="${chuyen.NgayChay}" id="NgayChay" name="NgayChay"
+                       placeholder=""/>
+            </div>
+            <br>
+            <div class="text-center pt-1 mb-5 pb-1 col-3">
+                <input type="submit" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" value="Đăng ký">
+            </div>
+            <br>
+        </form>
+        <!-- ================================== End Main Content ==================================-->
+    </div>
+</div>
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+<th:block th:replace="layoutxe :: link-javascript"></th:block>
+</body>
+</html>

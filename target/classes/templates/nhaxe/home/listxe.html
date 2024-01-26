@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <title>Nhà xe - Danh sách xe</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <th:block th:replace="layoutnhaxe :: link-css"></th:block>
+</head>
+<body id="page-top">
+<div id="wrapper">
+    <th:block th:replace="layoutnhaxe :: sidebar"></th:block>
+    <div id="content-wrapper" class="d-flex flex-column">
+        <th:block th:replace="layoutnhaxe :: navbar"></th:block>
+        <!--==================================== Main Content===================================== -->
+        <div id="content">
+            <div class="container-fluid">
+                <table class="table">
+                    <tr>
+                        <th>Biển kiểm soát</th>
+                        <th>Tên tài xế</th>
+                        <th>Số ghế</th>
+                        <th>Năm sản xuất</th>
+                        <th>Loại xe</th>
+                        <th>Bãi đậu xe</th>
+                    </tr>
+                    <tr th:each="xe : ${xes}">
+                        <td th:text="${xe.BKS}"></td>
+                        <td th:text="${xe.TenTaiXe}"></td>
+                        <td th:text="${xe.SoGhe}"></td>
+                        <td th:text="${xe.NamSX}"></td>
+                        <td th:text="${xe.loaiXe.TenLoaiXe}"></td>
+                        <td th:text="${xe.baiDauXe.MoTaViTri}"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!-- ================================== End Main Content ==================================-->
+    </div>
+</div>
+</div>
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+<th:block th:replace="layoutnhaxe :: link-javascript"></th:block>
+</body>
+</html>

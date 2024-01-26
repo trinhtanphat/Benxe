@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Admin - Quản lý nhân viên</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <th:block th:replace="layoutadmin :: link-css"></th:block>
+</head>
+<body id="page-top">
+<div id="wrapper">
+    <!-- Sidebar -->
+    <th:block th:replace="layoutadmin :: sidebar"></th:block>
+    <!-- End of Sidebar -->
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+        <th:block th:replace="layoutadmin :: navbar"></th:block>
+        <!-- Main Content -->
+        <form class="d-flex" th:action="@{/admin/search}" method="get">
+            <input class="form-control me-2" type="search" placeholder="Search"
+                   aria-label="Search" name="keyword">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+        <button class="col-6 btn btn-success btn-block fa-lg mb-3 align-self-center"
+                onclick="location.href='/admin/createnhanvien'">Thêm nhân viên
+        </button>
+        <div id="content">
+            <div class="container-fluid">
+                <table class="table">
+                    <tr>
+                        <th><a th:href="@{/admin(pageNo=${currentPage}, sortBy= 'Id')}">ID</a></th>
+                        <th><a th:href="@{/admin(pageNo=${currentPage}, sortBy= 'tenNV')}">Họ Tên</a></th>
+                        <th><a th:href="@{/admin(pageNo=${currentPage}, sortBy= 'namsinh')}">Năm Sinh</a></th>
+                        <th><a th:href="@{/admin(pageNo=${currentPage}, sortBy= 'diaChi')}">Địa Chỉ</a></th>
+                        <th><a th:href="@{/admin(pageNo=${currentPage}, sortBy= 'SDT')}">Số Điện Thoại</a></th>
+                        <th><a th:href="@{/admin(pageNo=${currentPage}, sortBy= 'Email')}">Email</a></th>
+                        <th><a th:href="@{/admin(pageNo=${currentPage}, sortBy= 'chucVu')}">Chức Vụ</a></th>
+                        <th><a th:href="@{/admin(pageNo=${currentPage}, sortBy= 'phongBan')}">Phòng Ban</a></th>
+                        <th sec:authorize="hasAnyAuthority('ADMIN') or hasAnyAuthority('USER')">Thao Tác</th>
+                    </tr>
+                    <tr th:each="nhanvien : ${NhanViens}">
+                        <td th:text="${nhanvien.MaNV}"></td>
+                        <td th:text="${nhanvien.TenNV}"></td>
+                        <td th:text="${nhanvien.NamSinh}"></td>
+                        <td th:text="${nhanvien.DiaChi}"></td>
+                        <td th:text="${nhanvien.SDT}"></td>
+                        <td th:text="${nhanvien.Email}"></td>
+                        <td th:if="${nhanvien.chucVu}" th:text="${nhanvien.chucVu.TenChucVu}"></td>
+                        <td th:if="${nhanvien.phongBan}" th:text="${nhanvien.phongBan.TenPhongBan}"></td>
+                        <td>
+                            <!---->
+                            <!---->
+                            <a th:href="@{/admin/nhanvien/edit/{id}(id=${nhanvien.MaNV})}"
+                               class="m-1 btn btn-success bi bi-pencil-square"> Edit</a>
+                            <a th:href="@{/admin/nhanvien/delete/{id}(id=${nhanvien.MaNV})}"
+                               onclick="deleteNhanVien(this); return false;"
+                               class="m-1 btn btn-danger bi bi-trash-fill"> Delete</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col">
+    <nav aria-label="Page navigation example">
+        <div class="d-flex justify-content-center pagination-sm">
+            <ul class="pagination" th:each="i : ${#numbers.sequence(0, totalPages)}">
+                <li class="page-item" th:classappend="${currentPage == i} ? 'active'" style="list-style-type: none; margin-right: 10px;">
+                    <a class="page-link" th:href="@{/admin(pageNo=${i})}" th:text="${i+1}"></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<!-- End of Page Wrapper -->
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+<script th:inline="javascript">
+  function deleteNhanVien(link){
+      if(confirm('Are you sure?')){
+      $.ajax({
+        url: $(link).attr('href'),
+        type: 'DELETE',
+        success: result =>   {
+          if(!result.success){
+            alert(result.message);
+          } else {
+            $(link).parent().parent().remove();
+          }
+        }
+      });
+      }
+  }
+</script>
+<th:block th:replace="layoutadmin :: link-javascript"></th:block>
+</body>
+</html>

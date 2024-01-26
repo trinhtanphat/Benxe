@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Travel and Tour</title>
+    <th:block th:replace="layoutnhanvien :: link-css"></th:block>
+</head>
+<body id="page-top">
+    <div  id="wrapper">
+        <th:block th:replace="layoutnhanvien :: sidebar"></th:block>
+        <div id="content-wrapper" class="d-flex flex-column">
+            <th:block th:replace="layoutnhanvien :: navbar"></th:block>
+            <!--==================================== Main Content===================================== -->
+           <section>
+                <div>
+                    <span>Contact Admin</span>
+                </div>
+           </section>
+            <!-- ================================== End Main Content ==================================-->
+            </div>
+        </div>
+    </div>
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+    <th:block th:replace="layoutnhanvien :: link-javascript"></th:block>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Admin - Quản lý tuyến</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <th:block th:replace="layoutadmin :: link-css"></th:block>
+</head>
+<body id="page-top">
+<div id="wrapper">
+    <!-- Sidebar -->
+    <th:block th:replace="layoutadmin :: sidebar"></th:block>
+    <!-- End of Sidebar -->
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+        <th:block th:replace="layoutadmin :: navbar"></th:block>
+        <!-- Main Content -->
+        <button class="col-6 btn btn-success btn-block fa-lg mb-3 align-self-center"
+                onclick="location.href='/admin/createtuyen'">Thêm tuyến
+        </button>
+        <div id="content">
+            <div class="container-fluid">
+                <table class="table">
+                    <tr>
+                        <th>Điểm đi</th>
+                        <th>Điểm đến</th>
+                        <th>Thời gian xuất bến</th>
+                        <th>Thời gian về bến</th>
+                    </tr>
+                    <tr th:each="tuyen : ${tuyens}">
+                        <td th:text="${tuyen.DiemDi}"></td>
+                        <td th:text="${tuyen.DiemDen}"></td>
+                        <td th:text="${tuyen.ThoiGianXuatBen}"></td>
+                        <td th:text="${tuyen.ThoiGianVeBen}"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of Page Wrapper -->
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+<th:block th:replace="layoutadmin :: link-javascript"></th:block>
+</body>
+</html>

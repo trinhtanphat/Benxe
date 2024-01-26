@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Bến xe miền đông</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <th:block th:replace="layoutnhaxe :: link-css"></th:block>
+</head>
+<body id="page-top">
+<div id="wrapper">
+    <!-- Sidebar -->
+    <th:block th:replace="layoutnhaxe :: sidebar"></th:block>
+    <!-- End of Sidebar -->
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+        <th:block th:replace="layoutnhaxe :: navbar"></th:block>
+        <!-- Main Content -->
+        <div id="content">
+            <div class="container-fluid">
+                <form th:action="@{/nhaxe/addxe}" method="post">
+                    <div class="col-md-6">
+                        <fieldset>
+                            <label class="form-label" style="color: black;">THÔNG TIN XE </label>
+                        </fieldset>
+                        <fieldset>
+                            <label class="form-label" style="color: black;">Biển kiểm soát xe: </label>
+                            <input type="text" class="form-control" th:value="${xe.BKS}" id="BKS" name="BKS"
+                                   placeholder="" required>
+                        </fieldset>
+                        <fieldset>
+                            <label class="form-label" style="color: black;">Tên Tài xế: </label>
+                            <input type="text" class="form-control" th:value="${xe.TenTaiXe}" id="TenTaiXe"
+                                   name="TenTaiXe" placeholder="" required>
+                        </fieldset>
+                        <fieldset>
+                            <label class="form-label" style="color: black;">Số ghế: </label>
+                            <input type="text" class="form-control" th:value="${xe.SoGhe}" id="SoGhe" name="SoGhe"
+                                   placeholder="" required>
+                        </fieldset>
+                        <fieldset>
+                            <label class="form-label" style="color: black;">Năm sản xuất: </label>
+                            <input type="year" class="form-control" th:value="${xe.NamSX}" id="NamSX" name="NamSX"
+                                   placeholder="" required>
+                        </fieldset>
+                        <fieldset>
+                            <label class="form-label" style="color: black;">Số điện thoại của xe: </label>
+                            <input type="text" class="form-control" th:field="${xe.SDT}" placeholder="" required>
+                        </fieldset>
+                        <fieldset>
+                            <label class="form-label" style="color: black;">Loại xe: </label>
+                            <select class="form-control" id="loaiXe" name="loaiXe.MaLX">
+                                <option value="">--Chọn Loại xe--</option>
+                                <option th:each="loaiXe : ${loaiXes}" th:value="${loaiXe.MaLX}"
+                                        th:text="${loaiXe.TenLoaiXe}"></option>
+                            </select>
+                            <br>
+                            <fieldset>
+                                <label class="form-label" style="color: black;">Chọn tuyến: </label>
+                                <select class="form-control" id="tuyen" name="tuyen.MaTuyen">
+                                    <option value="">--Chọn Tuyến--</option>
+                                    <option th:each="tuyen : ${tuyens}" th:value="${tuyen.MaTuyen}"
+                                            th:text="${tuyen.DiemDi}+' -> '+ ${tuyen.DiemDen} +' | Thời gian xuất bến: '+ ${tuyen.ThoiGianXuatBen}+' | Thời Gian Về Bến: ' + ${tuyen.ThoiGianVeBen}"></option>
+                                </select>
+                            </fieldset>
+                            <br>
+                        </fieldset>
+                        <fieldset>
+                            <label class="form-label" style="color: black;">Chọn vị trí đậu xe: </label>
+                            <select class="form-control" id="baiDauXe" name="baiDauXe.MaBDX">
+                                <option value="">--Chọn bãi đậu--</option>
+                                <option th:each="baiDauXe : ${baiDauXes}" th:value="${baiDauXe.MaBDX}"
+                                        th:text="'Vị Trí: '+${baiDauXe.MoTaViTri}+' | Thời gian đậu xe từ: '+ ${baiDauXe.ThoiGianDen}+' đến: ' + ${baiDauXe.ThoiGianDi}"></option>
+                            </select>
+                            <br>
+                        </fieldset>
+                    </div>
+                    <div class="col-md-12">
+                        <fieldset>
+                            <button type="submit" id="form-submit" class="btn btn-success">Nộp đơn xin tuyến</button>
+                        </fieldset>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of Page Wrapper -->
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+<th:block th:replace="layoutnhaxe :: link-javascript"></th:block>
+</body>
+</html>

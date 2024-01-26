@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.Thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <th:block th:fragment="link-css">
+        <script src="/assets/vendor/js/helpers.js"></script>
+        <script src="/assets/js/config.js"></script>
+        <link href="/assets/Admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+              rel="stylesheet">
+        <link href="/assets/Admin/css/sb-admin-2.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/assets/vendor/fonts/boxicons.css"/>
+        <link rel="stylesheet" href="/assets/vendor/css/core.css" class="template-customizer-core-css"/>
+        <link rel="stylesheet" href="/assets/vendor/css/theme-default.css" class="template-customizer-theme-css"/>
+        <link rel="stylesheet" href="/assets/css/demo.css"/>
+        <link rel="stylesheet" href="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css"/>
+        <link rel="stylesheet" href="/assets/vendor/libs/apex-charts/apex-charts.css"/>
+        <script src="/assets/vendor/js/helpers.js"></script>
+        <script src="/assets/js/config.js"></script>
+    </th:block>
+</head>
+<body id="page-top">
+<!-- Page Wrapper -->
+<div id="wrapper">
+    <!-- Sidebar -->
+    <ul th:fragment="sidebar" class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+        id="accordionSidebar">
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item">
+            <a class="nav-link text-center "><span>XE</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="/xe/listchuyenxe" aria-expanded="true" aria-controls="collapseTwo">
+                <span> Quản lý chuyến xe</span>
+            </a>
+            <a class="nav-link collapsed" href="/xe/listhoadon" aria-expanded="true" aria-controls="collapseTwo">
+                <span> Quản lý hóa đơn</span>
+            </a>
+            <a class="nav-link collapsed" href="/resetPassword" aria-expanded="true" aria-controls="collapseTwo">
+                <span> Thay đổi thông tin tài khoản</span>
+            </a>
+        </li>
+    </ul>
+    <!-- End of Sidebar -->
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+        <nav th:fragment="navbar" class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                <i class="fa fa-bars"></i>
+            </button>
+            <ul class="navbar-nav text-uppercase">
+                <li class="nav-item">
+                    <a class="nav-link" href="/xe"><img src="/img/img.png" width="60" height="60" alt="">
+                        <span class="mr-2 d-none d-lg-inline text-gray-900 font-weight-bold" style="font-size: 220%; ">BẾN XE MIỀN ĐÔNG</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto text-uppercase">
+                <li class="nav-item">
+                    <a class="nav-link">
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 font-weight-bold"></span>
+                        <!--                            th:text="${session.infoUser.user.xes[0].BKS}" ></span>-->
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link dangxuat" href="/logout">
+                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-600"></i>
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 font-weight-bold">Đăng xuất</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- Main Content -->
+        <!-- <div th:insert="~{::${content}}">
+        </div> -->
+    </div>
+</div>
+<!-- End of Page Wrapper -->
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+<!-- Bootstrap core JavaScript-->
+<script th:fragment="link-javascript" src="/assets/Admin/vendor/jquery/jquery.min.js"></script>
+<script th:fragment="link-javascript" src="/assets/Admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script th:fragment="link-javascript" src="/assets/Admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script th:fragment="link-javascript" src="/assets/Admin/js/sb-admin-2.min.js"></script>
+<script th:fragment="link-javascript" src="/assets/vendor/libs/jquery/jquery.js"></script>
+<script th:fragment="link-javascript" src="/assets/vendor/libs/popper/popper.js"></script>
+<script th:fragment="link-javascript" src="/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+<script th:fragment="link-javascript" src="/assets/vendor/js/bootstrap.js"></script>
+<script th:fragment="link-javascript" src="/assets/vendor/js/menu.js"></script>
+<!-- endbuild -->
+<!-- Vendors JS -->
+<script th:fragment="link-javascript" src="/assets/vendor/libs/apex-charts/apexcharts.js"></script>
+<!-- Main JS -->
+<script th:fragment="link-javascript" src="/assets/js/main.js"></script>
+<script th:fragment="link-javascript" src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script th:fragment="link-javascript">
+        $(document).ready(function(){
+            $('.dangxuat').click(function(){
+                event.preventDefault();
+                var url = $(this).attr('href');
+                Swal.fire({
+                    title: 'Bạn muốn đăng xuất?',
+                    text: '',
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Đồng ý',
+                    cancelButtonText: 'Hủy bỏ'
+                }).then(function (result) {
+                    if (result.value) {
+                        // Chuyển hướng đến trang xóa
+                        window.location.href = url;
+                    }
+                });
+            });
+        });
+</script>
+<!-- Page JS -->
+<script th:fragment="link-javascript" src="/assets/js/dashboards-analytics.js"></script>
+<!-- Place this tag in your head or just before your close body tag. -->
+<script th:fragment="link-javascript" async defer src="https://buttons.github.io/buttons.js"></script>
+</body>
+</html>

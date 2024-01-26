@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <th:block th:replace="~{layoutuser::link-css}"></th:block>
+</head>
+<body>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<th:block th:replace="layoutuser :: header"></th:block>
+<div class="container" th:if="${not #lists.isEmpty(cart.cartItems)}">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Mã chuyến xe</th>
+            <th scope="col">Điểm đi</th>
+            <th scope="col">Điểm đến</th>
+            <th scope="col">Số lượng</th>
+            <th scope="col">Giá vé</th>
+            <th scope="col">Tổng tiền chuyến</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${cart.cartItems}">
+            <td th:text="${item.getChuyenXeId()}"></td>
+            <td th:text="${item.getDiemDi()}"></td>
+            <td th:text="${item.getDiemDen()}"></td>
+            <td>
+                <label>
+                    <input type="number" min="1"
+                           th:value="${item.getQuantity()}"
+                           th:attr="data-id=${item.getChuyenXeId()}"
+                           class="form-control quantity">
+                </label>
+            </td>
+            <td th:text="'$' + ${item.getPrice()} + '0'"></td>
+            <td th:text="'$' + ${item.getPrice() * item.getQuantity()} + '0'"></td>
+            <td>
+                <a class="btn btn-danger"
+                   th:href="@{/cart/removeFromCart/{id}(id=${item.getChuyenXeId()})}">
+                    Remove
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-md-12 nav navbar-nav navbar-right">
+            <h3 class="nav navbar-nav navbar-right">Total: <span class="nav navbar-nav navbar-right" th:text=" ' ' + '$' + ${totalPrice} + '0'"></span></h3>
+        </div>
+        <div class="col-md-12 text-center">
+            <a class="m-1 btn btn-success"
+               th:href="@{/cart/checkoutmomo}">Checkout with MOMO</a>
+            <a class="m-1 btn btn-success"
+               th:href="@{/cart/checkoutvnpay}">Checkout with VNPAY</a>
+            <a class="m-1 btn btn-danger"
+               th:href="@{/cart/clearCart}">Clear Cart</a>
+        </div>
+    </div>
+</div>
+<div class="container" th:if="${#lists.isEmpty(cart.cartItems)}">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 offset-md-3 text-center">
+                <h3 class="mt-5">Your cart is empty</h3>
+                <p class="lead">Please add some tickets to your cart</p>
+                <a class="btn btn-primary" href="/khachhang">Book tickets</a>
+            </div>
+        </div>
+    </div>
+</div>
+<th:block th:replace="~{layoutuser::footer}"></th:block>
+<script th:src="@{js/jquery-3.6.4.min.js}"></script>
+<script th:src="@{/js/cart.js}"></script>
+</body>
+</html>

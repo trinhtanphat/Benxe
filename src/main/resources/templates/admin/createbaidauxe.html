@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Admin - Thêm bãi đậu xe</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <th:block th:replace="layoutadmin :: link-css"></th:block>
+</head>
+<body id="page-top">
+<div id="wrapper">
+    <!-- Sidebar -->
+    <th:block class="w-100" th:replace="layoutadmin :: sidebar"></th:block>
+    <!-- End of Sidebar -->
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+        <th:block th:replace="layoutadmin :: navbar"></th:block>
+        <!-- Main Content -->
+        <form class="w-100 d-flex align-items-center flex-column" th:action="@{/admin/createbaidauxe}" method="post">
+            <div class="form-outline mb-4 col-9">
+                <label class="title">Vị Trí</label>
+                <input type="text" class="form-control" th:value="${bdx.MoTaViTri}" id="MoTaViTri" name="MoTaViTri"
+                       placeholder=""/>
+            </div>
+            <br>
+            <div class="form-outline mb-4 col-9">
+                <label class="form-label">Thời gian đến</label>
+                <input type="time" class="form-control" th:value="${bdx.ThoiGianDen}" id="ThoiGianDen"
+                       name="ThoiGianDen"
+                       placeholder=""/>
+            </div>
+            <div class="form-outline mb-4 col-9">
+                <label class="form-label">Thời gian đi</label>
+                <input type="time" class="form-control" th:value="${bdx.ThoiGianDi}" id="ThoiGianDi" name="ThoiGianDi"
+                       placeholder=""/>
+            </div>
+            <br>
+            <div class="text-center pt-1 mb-5 pb-1 col-3">
+                <input type="submit" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" value="Thêm">
+            </div>
+        </form>
+    </div>
+</div>
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+<th:block th:replace="layoutadmin :: link-javascript"></th:block>
+</body>
+</html>

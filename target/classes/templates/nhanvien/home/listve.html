@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Bến xe miền đông</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <th:block th:replace="layoutnhanvien :: link-css"></th:block>
+</head>
+<body id="page-top">
+<div id="wrapper">
+    <!-- Sidebar -->
+    <th:block th:replace="layoutnhanvien :: sidebar"></th:block>
+    <!-- End of Sidebar -->
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+        <th:block th:replace="layoutnhanvien :: navbar"></th:block>
+        <!-- Main Content -->
+        <div id="content">
+            <div class="container-fluid">
+                <table class="table">
+                    <tr>
+                        <th>Ngày Đặt</th>
+                        <th>Tình Trạng Vé</th>
+                        <th>Vị trí lên xe</th>
+                        <th>Tên Khách Hàng</th>
+                        <th>Ghi Chú</th>
+                        <th>Đánh giá chuyến xe</th>
+                        <th>Tên nhân viên</th>
+                    </tr>
+                    <tr th:each="pdv : ${phieuDatVes}">
+                        <td th:text="${pdv.NgayDat}"></td>
+                        <td th:text="${pdv.TinhTrangVe}"></td>
+                        <td th:text="${pdv.ViTriLenXe}"></td>
+                        <td th:text="${pdv.khachHang.TenKH}"></td>
+                        <td th:text="${pdv.GhiChu}"></td>
+                        <td th:text="${pdv.DanhGiaChuyenXe}"></td>
+                        <td th:text="${pdv.nhanVien.TenNV}"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End of Page Wrapper -->
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+<th:block th:replace="layoutnhanvien :: link-javascript"></th:block>
+</body>
+</html>
